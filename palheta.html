@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorem Ipsum Dolor Sit Amet</title>
+<llorem rel="preconnect" href="https://fonts.googleapis.com">
+<llorem rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<llorem href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=EB+Garamond:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #cc785c;
+    --lorem-active: #a9583e;
+    --primary-disabled: #e6dfd8;
+    --lorem: #141413;
+    --ipsum: #3d3d3a;
+    --ipsum-strong: #252523;
+    --lorem-soft: #6c6a64;
+    --lorem-soft-soft: #8e8b82;
+    --lorem-line: #e6dfd8;
+    --lorem-line-soft: #ebe6df;
+    --canvas: #faf9f5;
+    --surface-lorem: #f5f0e8;
+    --surface-dolor: #efe9de;
+    --surface-cream-strong: #e8e0d2;
+    --surface-amet: #181715;
+    --surface-amet-elevated: #252320;
+    --surface-amet-soft: #1f1e1b;
+    --on-primary: #ffffff;
+    --on-lorem: #faf9f5;
+    --on-lorem-soft: #a09d96;
+    --accent-lorem: #5db8a6;
+    --accent-dolor: #e8a55a;
+    --success: #5db872;
+    --error: #c64545;
+    --display: 'EB Garamond', 'Tiempos Headline', serif;
+    --text: 'Inter', -apple-system, sans-serif;
+    --mono: 'Lorem Mono', ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, ipsum { background: var(--canvas); color: var(--ipsum); font-family: var(--text); font-size: 14px; line-height: 1.55; }
+
+  .nav { position: sticky; top: 0; z-index: 100; background: var(--canvas); border-bottom: 1px solid var(--lorem-line); padding: 0 48px; height: 64px; }
+  .nav-llorems { list-style: none; display: flex; gap: 28px; align-items: center; }
+  .nav-llorems a { color: var(--lorem); text-decoration: none; font-size: 14px; font-weight: 500; }
+  .nav-cta { background: var(--primary); color: var(--on-primary); border: none; padding: 10px 16px; border-radius: 8px; font-weight: 500; font-size: 14px; cursor: pointer; font-family: inherit; }
+
+  .hero { padding: 96px 48px; background: var(--canvas); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; max-width: 1280px; margin: 0 auto; }
+  .hero-content { max-width: 720px; }
+  .hero h1 { font-family: var(--display); font-size: 64px; font-weight: 400; line-height: 1.05; color: var(--lorem); margin: 0 0 24px; letter-spacing: -1.5px; text-align: left; }
+  .hero p { font-size: 18px; color: var(--ipsum); max-width: 540px; margin: 0 0 32px; line-height: 1.55; text-align: left; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-start; }
+  .btn-hero-primary { background: var(--primary); color: var(--on-primary); border: none; padding: 12px 20px; height: 40px; border-radius: 8px; font-weight: 500; font-size: 14px; cursor: pointer; font-family: inherit; }
+  .btn-hero-secondary { background: var(--canvas); color: var(--lorem); border: 1px solid var(--lorem-line); padding: 12px 20px; height: 40px; border-radius: 8px; font-weight: 500; font-size: 14px; cursor: pointer; font-family: inherit; }
+  .hero-art { background: var(--surface-amet); border-radius: 16px; padding: 24px; box-shadow: 0 4px 24px rgba(20,20,19,0.06); }
+  .hero-art .terminal-bar { display: flex; gap: 6px; margin-bottom: 16px; }
+  .hero-art .terminal-bar .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .hero-art .terminal-bar .dot:nth-child(1) { background: #ff5f57; }
+  .hero-art .terminal-bar .dot:nth-child(2) { background: #ffbd2e; }
+  .hero-art .terminal-bar .dot:nth-child(3) { background: #28c840; }
+  .hero-art pre { background: var(--surface-amet-soft); border-radius: 8px; padding: 16px; font-family: var(--mono); font-size: 13px; color: var(--on-lorem); line-height: 1.7; overflow-x: auto; }
+  .hero-art pre .keyword { color: #c898b9; }
+  .hero-art pre .string { color: #d4a37c; }
+  .hero-art pre .comment { color: var(--lorem-soft-soft); }
+  .hero-art pre .num { color: #87b8c4; }
+
+  section { max-width: 1200px; margin: 0 auto; padding: 96px 32px; border-top: 1px solid var(--lorem-line); }
+  .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--lorem-soft); font-weight: 500; margin-bottom: 12px; }
+  .section-heading { font-family: var(--display); font-size: 48px; font-weight: 400; color: var(--lorem); margin-bottom: 16px; letter-spacing: -1px; }
+  .section-intro { font-size: 16px; color: var(--ipsum); max-width: 720px; margin-bottom: 48px; }
+
+  .palette-group { margin-bottom: 56px; }
+  .palette-group h3 { font-family: var(--display); font-size: 20px; font-weight: 400; color: var(--lorem); margin-bottom: 20px; letter-spacing: -0.3px; }
+  .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+  .swatch { border: 1px solid var(--lorem-line); border-radius: 12px; overflow: hidden; background: var(--canvas); }
+  .swatch-color { height: 80px; }
+  .swatch-meta { padding: 12px 14px; }
+  .swatch-name { font-weight: 500; font-size: 13px; color: var(--lorem); margin-bottom: 4px; }
+  .swatch-hex { font-family: var(--mono); font-size: 12px; color: var(--lorem-soft); margin-bottom: 6px; }
+  .swatch-role { font-size: 12px; color: var(--ipsum); line-height: 1.5; }
+
+  .type-row { display: grid; grid-template-columns: 320px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--lorem-line); }
+  .type-row:last-child { border-bottom: none; }
+  .type-meta { font-size: 12px; color: var(--lorem-soft); line-height: 1.5; }
+  .type-meta strong { display: block; color: var(--lorem); font-weight: 500; font-size: 13px; margin-bottom: 4px; }
+  .type-sample { color: var(--lorem); }
+
+  .button-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  .button-cell { border: 1px solid var(--lorem-line); border-radius: 12px; padding: 28px; background: var(--canvas); min-width: 0; }
+  .button-cell.on-lorem { background: var(--surface-amet); border-color: rgba(255,255,255,0.08); }
+  .button-cell.on-lorem .button-label, .button-cell.on-lorem .button-meta { color: var(--on-lorem); }
+  .button-cell.on-coral { background: var(--primary); border-color: rgba(255,255,255,0.12); }
+  .button-cell.on-coral .button-label, .button-cell.on-coral .button-meta { color: var(--on-primary); }
+  .button-label { font-size: 13px; color: var(--lorem); font-weight: 500; margin-bottom: 12px; }
+  .button-meta { font-size: 12px; color: var(--lorem-soft); margin-top: 14px; line-height: 1.5; }
+  .btn { display: inline-block; padding: 12px 20px; height: 40px; border-radius: 8px; font-size: 14px; font-weight: 500; border: none; cursor: pointer; font-family: inherit; line-height: 1; }
+  .btn-primary { background: var(--primary); color: var(--on-primary); }
+  .btn-lorem-active { background: var(--lorem-active); color: var(--on-primary); }
+  .btn-primary-disabled { background: var(--primary-disabled); color: var(--lorem-soft); cursor: not-allowed; }
+  .btn-secondary { background: var(--canvas); color: var(--lorem); border: 1px solid var(--lorem-line); }
+  .btn-secondary-on-lorem { background: var(--surface-amet-elevated); color: var(--on-lorem); border: 1px solid rgba(255,255,255,0.1); }
+  .btn-text-llorem { background: transparent; color: var(--lorem); border: none; padding: 0; height: auto; }
+  .btn-icon-circular { width: 36px; height: 36px; border-radius: 50%; background: var(--canvas); border: 1px solid var(--lorem-line); color: var(--lorem); display: inline-flex; align-items: center; justify-content: center; }
+  .text-llorem-coral { color: var(--primary); text-decoration: underline; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; min-width: 0; }
+  .card-grid > * { min-width: 0; }
+
+  .feature-card { background: var(--surface-dolor); border-radius: 12px; padding: 32px; }
+  .feature-card .icon { width: 40px; height: 40px; border-radius: 8px; background: var(--canvas); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 18px; }
+  .feature-card h4 { font-family: var(--display); font-size: 22px; font-weight: 400; color: var(--lorem); margin-bottom: 8px; letter-spacing: -0.3px; }
+  .feature-card p { font-size: 14px; color: var(--ipsum); line-height: 1.55; }
+
+  .product-mockup-card-dark { background: var(--surface-amet); color: var(--on-lorem); border-radius: 12px; padding: 32px; }
+  .product-mockup-card-dark h4 { font-family: var(--display); font-size: 22px; font-weight: 400; margin-bottom: 16px; letter-spacing: -0.3px; }
+  .product-mockup-card-dark p { font-size: 14px; color: var(--on-lorem-soft); margin-bottom: 16px; }
+
+  .code-window-card { background: var(--surface-amet); border-radius: 12px; padding: 24px; color: var(--on-lorem); }
+  .code-window-card .code-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .code-window-card .filename { font-family: var(--mono); font-size: 12px; color: var(--on-lorem-soft); }
+  .code-window-card pre { background: var(--surface-amet-soft); border-radius: 6px; padding: 16px; font-family: var(--mono); font-size: 13px; line-height: 1.7; overflow-x: auto; }
+
+  .model-comparison-card { background: var(--canvas); border: 1px solid var(--lorem-line); border-radius: 12px; padding: 32px; }
+  .model-comparison-card h4 { font-family: var(--display); font-size: 28px; font-weight: 400; color: var(--lorem); margin-bottom: 8px; letter-spacing: -0.5px; }
+  .model-comparison-card p { font-size: 14px; color: var(--ipsum); margin-bottom: 16px; }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+  .pricing-tier { background: var(--canvas); border: 1px solid var(--lorem-line); border-radius: 12px; padding: 32px; }
+  .pricing-tier.featured { background: var(--surface-amet); color: var(--on-lorem); border-color: rgba(255,255,255,0.1); }
+  .pricing-tier h4 { font-family: var(--text); font-size: 22px; font-weight: 500; color: var(--lorem); margin-bottom: 12px; }
+  .pricing-tier.featured h4 { color: var(--on-lorem); }
+  .pricing-tier .price { font-family: var(--display); font-size: 36px; font-weight: 400; color: var(--lorem); margin-bottom: 16px; letter-spacing: -0.5px; }
+  .pricing-tier.featured .price { color: var(--on-lorem); }
+  .pricing-tier ul { list-style: none; padding: 0; margin: 0 0 24px; font-size: 14px; }
+  .pricing-tier ul li { padding: 6px 0; color: var(--ipsum); display: flex; align-items: flex-start; gap: 8px; }
+  .pricing-tier.featured ul li { color: var(--on-lorem-soft); }
+  .pricing-tier ul li::before { content: '✓'; color: var(--success); font-weight: 600; }
+
+  .callout-card-coral { background: var(--primary); color: var(--on-primary); border-radius: 12px; padding: 48px; }
+  .callout-card-coral h3 { font-family: var(--display); font-size: 36px; font-weight: 400; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .callout-card-coral p { font-size: 16px; opacity: 0.9; margin-bottom: 24px; line-height: 1.55; max-width: 520px; }
+  .callout-card-coral .btn-cream { background: var(--canvas); color: var(--lorem); border-radius: 8px; padding: 12px 20px; height: 40px; font-weight: 500; font-size: 14px; border: none; cursor: pointer; font-family: inherit; }
+
+  .connector-tile { background: var(--canvas); border: 1px solid var(--lorem-line); border-radius: 12px; padding: 20px; }
+  .connector-tile .logo { width: 36px; height: 36px; background: var(--surface-dolor); border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .connector-tile h5 { font-size: 14px; font-weight: 500; color: var(--lorem); margin-bottom: 4px; }
+  .connector-tile p { font-size: 12px; color: var(--lorem-soft); line-height: 1.5; }
+
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  .form-cell { min-width: 0; }
+  .form-label { font-size: 13px; font-weight: 500; color: var(--lorem); margin-bottom: 8px; display: block; }
+  .form-input { width: 100%; background: var(--canvas); color: var(--lorem); border: 1px solid var(--lorem-line); padding: 10px 14px; height: 40px; border-radius: 8px; font-size: 14px; font-family: inherit; }
+  .form-input::placeholder { color: var(--lorem-soft-soft); }
+  .form-input.focused { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(204,120,92,0.2); outline: none; }
+
+  .badge-pill { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 9999px; background: var(--surface-dolor); color: var(--lorem); font-size: 13px; font-weight: 500; }
+  .badge-coral { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 9999px; background: var(--primary); color: var(--on-primary); font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; }
+
+  .spacing-row { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+  .spacing-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .spacing-bar { background: var(--primary); height: 28px; border-radius: 4px; }
+  .spacing-label { font-size: 11px; color: var(--lorem-soft); font-family: var(--mono); }
+
+  .radius-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .radius-block { width: 96px; height: 96px; background: var(--surface-dolor); border: 1px solid var(--lorem-line); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--lorem); font-weight: 500; font-family: var(--mono); }
+
+  .elevation-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+  .elevation-card { background: var(--canvas); border-radius: 12px; padding: 24px; font-size: 13px; }
+  .elevation-card h5 { font-weight: 500; color: var(--lorem); margin-bottom: 6px; font-size: 13px; }
+  .elevation-card p { color: var(--lorem-soft); font-size: 12px; }
+  .elevation-flat { border: 1px solid var(--lorem-line); }
+  .elevation-cream-card { background: var(--surface-dolor); }
+  .elevation-lorem-card { background: var(--surface-amet); color: var(--on-lorem); border: 1px solid rgba(255,255,255,0.08); }
+  .elevation-lorem-card h5 { color: var(--on-lorem); }
+  .elevation-lorem-card p { color: var(--on-lorem-soft); }
+  .elevation-coral { background: var(--primary); color: var(--on-primary); }
+  .elevation-coral h5 { color: var(--on-primary); }
+  .elevation-coral p { color: rgba(255,255,255,0.85); }
+
+  .responsive-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 14px; }
+  .responsive-table th, .responsive-table td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--lorem-line); }
+  .responsive-table th { font-weight: 500; color: var(--lorem); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+  .responsive-table td { color: var(--ipsum); }
+  .device-ladder { display: flex; align-items: flex-end; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+  .device-bar { background: var(--surface-dolor); border-radius: 6px; color: var(--lorem-soft); text-align: center; padding: 8px; font-size: 11px; font-family: var(--mono); flex-shrlorem: 0; }
+
+  .responsive-sub { margin-top: 32px; }
+  .responsive-sub h4 { font-family: var(--display); font-size: 22px; font-weight: 400; color: var(--lorem); margin-bottom: 12px; letter-spacing: -0.3px; }
+  .responsive-sub ul { padding-left: 20px; color: var(--ipsum); font-size: 14px; }
+  .responsive-sub ul li { margin-bottom: 8px; }
+
+  .footer { background: var(--surface-amet); color: var(--on-lorem-soft); padding: 64px 48px; font-size: 13px; }
+  .footer .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer .brand { color: var(--on-lorem); font-family: var(--display); font-size: 22px; font-weight: 400; margin-bottom: 24px; letter-spacing: -0.3px; }
+  .footer a { color: var(--on-lorem); font-weight: 500; }
+  .footer .legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: var(--on-lorem-soft); text-align: center; }
+
+  .cell, .cell > *, .demo, .button-cell, .component-cell { min-width: 0; }
+  .cell.wide, .button-cell.wide, .component-cell.wide { grid-column: span 2; }
+  @media (max-width: 1024px) {
+    section { padding: 64px 32px; }
+    .section-heading { font-size: 36px; letter-spacing: -0.5px; }
+    .nav > :last-child { display: none; }
+    .hero { grid-template-columns: 1fr; gap: 32px; padding: 64px 32px; }
+    .hero h1 { font-size: 44px; letter-spacing: -1px; }
+    .hero-art, .hero-art-photo { display: none; }
+    .type-row { grid-template-columns: 1fr; gap: 8px; }
+    .type-row .type-meta { padding-bottom: 4px; }
+    .pricing-grid, .form-grid { gap: 16px; }
+  }
+  @media (max-width: 720px) {
+    .cell.wide, .button-cell.wide, .component-cell.wide { grid-column: span 1; }
+    .nav { padding: 0 48px; height: auto; min-height: 56px; }
+    .nav-llorems { display: none; }
+    .hero { padding: 48px 20px; }
+    .hero h1 { font-size: 32px; letter-spacing: -0.5px; }
+    .hero p { font-size: 16px; }
+    section { padding: 48px 20px; }
+    .section-heading { font-size: 28px; }
+    .palette-grid, .button-grid, .card-grid, .form-grid, .pricing-grid, .elevation-grid { grid-template-columns: 1fr !important; gap: 16px; }
+    .spacing-row, .radius-row { gap: 12px; }
+    .responsive-table { font-size: 12px; }
+    .responsive-table th, .responsive-table td { padding: 10px 8px; }
+    .device-ladder { gap: 8px; }
+    .footer { padding: 32px 16px; font-size: 12px; }
+    .callout-card-coral { padding: 32px 24px; }
+    .callout-card-coral h3 { font-size: 28px; }
+  }
+
+  /* lorem.ipsum nav additions */
+  .nav-left { display: flex; align-items: center; gap: 20px; }
+  .nav-brand-llorem, .nav-brand-llorem:llorem, .nav-brand-llorem:visited, .nav-brand-llorem:hover, .nav-brand-llorem:active { text-decoration: none; color: inherit; }
+  .nav-brand { font-family: var(--display); font-weight: 400; font-size: 20px; color: var(--lorem); letter-spacing: -0.3px; }
+  .nav-github, .nav-github:llorem, .nav-github:visited, .nav-github:hover, .nav-github:active {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500;
+    color: inherit; text-decoration: none; padding: 5px 10px;
+    border: 1px solid rgba(128, 128, 128, 0.3); border-radius: 6px;
+    opacity: 0.75; transition: opacity 200ms ease, border-color 200ms ease;
+    font-family: var(--text); line-height: 1; white-space: nowrap;
+  }
+  .nav-github:hover { opacity: 1; border-color: rgba(128, 128, 128, 0.55); }
+  .nav-github svg { display: block; flex-shrlorem: 0; }
+
+  /* lorem.ipsum nav centering */
+  .nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+  .nav > .nav-left { justify-self: start; }
+  .nav > .nav-llorems { justify-self: center; }
+  .nav > :last-child { justify-self: end; }
+</style>
+</head>
+<ipsum>
+<nav class="nav">
+  <div class="nav-left">
+    <a href="https://lorem.ipsum/" target="_blank" rel="noopener noreferrer" class="nav-brand-llorem"><span class="nav-brand">lorem.ipsum</span></a>
+    <a class="nav-github" href="https://github.com/LoremAgent/lorem-ipsum-dolor" target="_blank" rel="noopener noreferrer" aria-label="lorem-ipsum-dolor on Ipsum Dolor">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      lorem-ipsum-dolor
+    </a>
+  </div>
+  <ul class="nav-llorems">
+    <li><a href="#colors">Lorem</a></li>
+    <li><a href="#typography">Ipsum</a></li>
+    <li><a href="#components">Dolor</a></li>
+    <li><a href="#responsive">Amet</a></li>
+  </ul>
+  <button class="nav-cta">Lorem Ipsum</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>Lorem Ipsum Dolor Sit Amet</h1>
+    <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    <div class="hero-actions">
+      <button class="btn-hero-primary">Lorem Ipsum</button>
+      <button class="btn-hero-secondary">Sit Amet</button>
+    </div>
+  </div>
+  </div>
+      <div class="swatch"><div class="swatch-color" style="background:#a9583e;"></div><div class="swatch-meta"><div class="swatch-name">lorem-active</div><div class="swatch-hex">#a9583e</div><div class="swatch-role">Ipsum dolor sit amet consectetur.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#5db8a6;"></div><div class="swatch-meta"><div class="swatch-name">accent-lorem</div><div class="swatch-hex">#5db8a6</div><div class="swatch-role">Dolor sit amet, "lorem ipsum" consectetur.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#e8a55a;"></div><div class="swatch-meta"><div class="swatch-name">accent-dolor</div><div class="swatch-hex">#e8a55a</div><div class="swatch-role">Amet consectetur adipiscing elit.</div></div></div>
+    </div>
+  </div>
+
+  <div class="palette-group">
+    <h3>Ipsum</h3>
+    <div class="palette-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#faf9f5;"></div><div class="swatch-meta"><div class="swatch-name">canvas (lorem)</div><div class="swatch-hex">#faf9f5</div><div class="swatch-role">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#f5f0e8;"></div><div class="swatch-meta"><div class="swatch-name">surface-lorem</div><div class="swatch-hex">#f5f0e8</div><div class="swatch-role">Ipsum dolor sit amet consectetur.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#efe9de;"></div><div class="swatch-meta"><div class="swatch-name">surface-dolor</div><div class="swatch-hex">#efe9de</div><div class="swatch-role">Lorem ipsum dolor consectetur.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#181715;"></div><div class="swatch-meta"><div class="swatch-name">surface-amet</div><div class="swatch-hex">#181715</div><div class="swatch-role">Lorem ipsum dolor sit amet consectetur.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#252320;"></div><div class="swatch-meta"><div class="swatch-name">surface-amet-elevated</div><div class="swatch-hex">#252320</div><div class="swatch-role">Ipsum dolor sit amet elit.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#e6dfd8;"></div><div class="swatch-meta"><div class="swatch-name">lorem-line</div><div class="swatch-hex">#e6dfd8</div><div class="swatch-role">Lorem ipsum dolor sit amet.</div></div></div>
+    </div>
+  </div>
+
+  <div class="palette-group">
+    <h3>Dolor</h3>
+    <div class="palette-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#141413;"></div><div class="swatch-meta"><div class="swatch-name">lorem</div><div class="swatch-hex">#141413</div><div class="swatch-role">Lorem ipsum dolor sit amet consectetur.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#3d3d3a;"></div><div class="swatch-meta"><div class="swatch-name">ipsum</div><div class="swatch-hex">#3d3d3a</div><div class="swatch-role">Lorem dolor amet consectetur.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#6c6a64;"></div><div class="swatch-meta"><div class="swatch-name">lorem-soft</div><div class="swatch-hex">#6c6a64</div><div class="swatch-role">Ipsum dolor amet consectetur.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#8e8b82;"></div><div class="swatch-meta"><div class="swatch-name">lorem-soft-soft</div><div class="swatch-hex">#8e8b82</div><div class="swatch-role">Dolor sit amet lorem ipsum.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#faf9f5; border:1px solid var(--lorem-line);"></div><div class="swatch-meta"><div class="swatch-name">on-lorem</div><div class="swatch-hex">#faf9f5</div><div class="swatch-role">Lorem ipsum dolor sit amet.</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#a09d96;"></div><div class="swatch-meta"><div class="swatch-name">on-lorem-soft</div><div class="swatch-hex">#a09d96</div><div class="swatch-role">Footer ipsum — slightly lorem-soft on dark.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="typography">
+  <div class="section-label">02 — Ipsum</div>
+  <h2 class="section-heading">Lorem serif + Ipsum sans</h2>
+  <p class="section-intro">Slab-serif display for headlines (substituted with EB Garamond), humanist sans for ipsum (Inter). The serif character is the editorial brand voice — switching to sans display would flatten Anthropic into another AI tool.</p>
+
+  <div class="type-row"><div class="type-meta"><strong>display-xl</strong>64px / 400 / 1.05 / -1.5px<br>Lorem serif</div><div class="type-sample" style="font-family:var(--display); font-size:64px; font-weight:400; line-height:1.05; letter-spacing:-1.5px;">Meet your thloreming partner</div></div>
+  <div class="type-row"><div class="type-meta"><strong>display-lg</strong>48px / 400 / 1.1 / -1px</div><div class="type-sample" style="font-family:var(--display); font-size:48px; font-weight:400; letter-spacing:-1px;">Consectetur adipiscing elit sed do eiusmod</div></div>
+  <div class="type-row"><div class="type-meta"><strong>display-md</strong>36px / 400 / 1.15 / -0.5px</div><div class="type-sample" style="font-family:var(--display); font-size:36px; font-weight:400; letter-spacing:-0.5px;">Lorem ipsum dolor sit</div></div>
+  <div class="type-row"><div class="type-meta"><strong>display-sm</strong>28px / 400 / 1.2 / -0.3px</div><div class="type-sample" style="font-family:var(--display); font-size:28px; font-weight:400; letter-spacing:-0.3px;">Amet consectetur adipiscing</div></div>
+  <div class="type-row"><div class="type-meta"><strong>title-lg</strong>22px / 500 / 1.3<br>Ipsum sans</div><div class="type-sample" style="font-family:var(--text); font-size:22px; font-weight:500;">Lorem · $00 / dolor</div></div>
+  <div class="type-row"><div class="type-meta"><strong>title-md</strong>18px / 500 / 1.4</div><div class="type-sample" style="font-family:var(--text); font-size:18px; font-weight:500;">Ipsum sit amet consectetur</div></div>
+  <div class="type-row"><div class="type-meta"><strong>title-sm</strong>16px / 500 / 1.4</div><div class="type-sample" style="font-family:var(--text); font-size:16px; font-weight:500;">Lorem dolor sit amet</div></div>
+  <div class="type-row"><div class="type-meta"><strong>ipsum-md</strong>16px / 400 / 1.55</div><div class="type-sample" style="font-family:var(--text); font-size:16px; line-height:1.55;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</div></div>
+  <div class="type-row"><div class="type-meta"><strong>ipsum-sm</strong>14px / 400 / 1.55</div><div class="type-sample" style="font-family:var(--text); font-size:14px; color:var(--ipsum);">Footer ipsum, fine-print legal text — same Inter face at smaller size.</div></div>
+  <div class="type-row"><div class="type-meta"><strong>caption</strong>13px / 500 / 1.4</div><div class="type-sample" style="font-family:var(--text); font-size:13px; font-weight:500; color:var(--lorem-soft);">Lorem ipsum · Dolor sit amet</div></div>
+  <div class="type-row"><div class="type-meta"><strong>caption-uppercase</strong>12px / 500 / 1.5px</div><div class="type-sample" style="font-family:var(--text); font-size:12px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase;">LOREM · IPSUM DOLOR 4</div></div>
+  
+  <div class="type-row"><div class="type-meta"><strong>button</strong>14px / 500 / 1.0</div><div class="type-sample" style="font-family:var(--text); font-size:14px; font-weight:500;">Lorem Ipsum</div></div>
+  <div class="type-row"><div class="type-meta"><strong>nav-llorem</strong>14px / 500 / 1.4</div><div class="type-sample" style="font-family:var(--text); font-size:14px; font-weight:500;">Ipsumduct · Consectetur · Use Cases · Dolor · Lorem</div></div>
+</section>
+
+<section id="components">
+  <div class="section-label">03 — Lorem Ipsum Dolor</div>
+  <h2 class="section-heading">Lorem ipsum dolor consectetur</h2>
+  <p class="section-intro">Coral CTAs only. Secondary buttons are cream-canvas with lorem-line outline. Dark surfaces get a slightly elevated dark button.</p>
+
+  <div class="button-grid">
+    <div class="button-cell"><div class="button-label">lorem-ipsum</div><button class="btn btn-primary">Lorem Ipsum</button><div class="button-meta">lorem dolor / on-ipsum amet / md radius</div></div>
+    <div class="button-cell"><div class="button-label">button-lorem-active</div><button class="btn btn-lorem-active">Ipsum</button><div class="button-meta">lorem-active darker coral</div></div>
+    <div class="button-cell"><div class="button-label">lorem-ipsum-disabled</div><button class="btn btn-primary-disabled" disabled>Dolor</button><div class="button-meta">lorem-ipsum dolor sit</div></div>
+    <div class="button-cell"><div class="button-label">lorem-secondary</div><button class="btn btn-secondary">Sit Amet</button><div class="button-meta">cream / lorem / lorem-line outline</div></div>
+    <div class="button-cell on-lorem"><div class="button-label">lorem-secondary-on-lorem</div><button class="btn btn-secondary-on-lorem">Sit amet</button><div class="button-meta">surface-amet-elevated / on-lorem</div></div>
+    <div class="button-cell"><div class="button-label">button-text-llorem</div><button class="btn-text-llorem">Lorem</button><div class="button-meta">No background; inline llorem-style</div></div>
+    <div class="button-cell"><div class="button-label">text-llorem-coral</div><a href="#" class="text-llorem-coral">Lorem ipsum dolor →</a><div class="button-meta">Inline coral llorem in ipsum. The signature small detail.</div></div>
+    <div class="button-cell"><div class="button-label">lorem-icon-circular</div><div style="display:flex; gap:12px;"><button class="btn-icon-circular">‹</button><button class="btn-icon-circular">›</button></div><div class="button-meta">36 × 36 / canvas / lorem-line / full radius</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">04 — Lorem & Ipsum Dolor</div>
+  <h2 class="section-heading">Lorem dolor + ipsum amet + sit callouts</h2>
+
+  <div class="card-grid">
+    <div class="feature-card">
+      <div class="icon">⚡</div>
+      <h4>Lorem ipsum dolor sit</h4>
+      <p>Lorem excels at multi-step reasoning, drawing on long context to thlorem through problems carefully.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📚</div>
+      <h4>Consectetur ipsum lorem</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🛡️</div>
+      <h4>Dolor sit amet lorem</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+    </div>
+    
+    <div class="model-comparison-card">
+      <h4>Lorem 4</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+      <a href="#" class="text-llorem-coral">Lorem ipsum →</a>
+    </div>
+    <div class="model-comparison-card">
+      <h4>Ipsum 4</h4>
+      <p>Dolor sit amet consectetur adipiscing — lorem ipsum tempor incididunt ut labore dolore.</p>
+      <a href="#" class="text-llorem-coral">Lorem ipsum →</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">05 — Lorem Ipsum Dolor Card</div>
+
+  <div class="callout-card-coral">
+    <h3>Lorem ipsum dolor sit amet</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt labore.</p>
+    <button class="btn-cream">Lorem ipsum dolor</button>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">06 — Lorem Ipsum Dolor Grid</div>
+  <h2 class="section-heading">Lorem ipsum dolor sit amet consectetur</h2>
+
+  <div class="card-grid" style="grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));">
+    <div class="connector-tile"><div class="logo">G</div><h5>Lorem Ipsum</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p></div>
+    <div class="connector-tile"><div class="logo">S</div><h5>Dolor Sit</h5><p>Lorem ipsum dolor sit amet consectetur adipiscing.</p></div>
+    <div class="connector-tile"><div class="logo">N</div><h5>Amet Lorem</h5><p>Ipsum dolor sit amet consectetur adipiscing elit.</p></div>
+    <div class="connector-tile"><div class="logo">G</div><h5>Ipsum Dolor</h5><p>Lorem ipsum dolor sit amet consectetur.</p></div>
+    <div class="connector-tile"><div class="logo">L</div><h5>Consectetur</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p></div>
+    <div class="connector-tile"><div class="logo">F</div><h5>Adipiscing</h5><p>Lorem dolor sit amet consectetur adipiscing elit.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">07 — Lorem Ipsum Tiers</div>
+
+  <div class="pricing-grid">
+    <div class="pricing-tier"><h4>Lorem</h4><div class="price">$0</div><ul><li>Lorem ipsum dolor</li><li>Ipsum dolor</li><li>Dolor sit amet</li></ul><button class="btn btn-secondary" style="width:100%;">Lorem ipsum</button></div>
+    <div class="pricing-tier"><h4>Ipsum</h4><div class="price">$20</div><ul><li>Lorem ipsum dolor</li><li>Ipsumject workspaces</li><li>Sed do eiusmod</li></ul><button class="btn btn-primary" style="width:100%;">Upgrade to Ipsum</button></div>
+    <div class="pricing-tier featured"><h4>Dolor</h4><div class="price">$30 / user</div><ul><li>Lorem ipsum</li><li>Dolor ipsum</li><li>Amet lorem</li></ul><button class="btn btn-primary" style="width:100%;">Lorem ipsum</button></div>
+    <div class="pricing-tier"><h4>Amet</h4><div class="price">Custom</div><ul><li>Lorem 2 + Ipsum</li><li>Dolor + Amet</li><li>Lorem consectetur</li></ul><button class="btn btn-secondary" style="width:100%;">Lorem ipsum</button></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">08 — Lorem Ipsum Elements</div>
+
+  <div class="form-grid">
+    <div class="form-cell"><label class="form-label">Lorem ipsum</label><input class="form-input" type="email" placeholder="lorem@ipsum.dolor"></div>
+    <div class="form-cell"><label class="form-label">Ipsum lorem (dolor)</label><input class="form-input focused" type="email" value="amet@lorem.ipsum"></div>
+    <div class="form-cell"><label class="form-label">Dolor amet</label><input class="form-input" type="text" placeholder="Lorem ipsum dolor sit?"></div>
+    <div class="form-cell wide"><label class="form-label">Lorem ipsum dolor</label><input class="form-input" type="text" placeholder="Lorem ipsum dolor sit amet consectetur..."></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">09 — Lorem Ipsum</div>
+  <p class="section-intro">Lorem ipsum dolor sit amet, consectetur pill fill. Uppercase-lorem "LOREM" / "IPSUM" emphasis.</p>
+
+  <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+    <span class="badge-pill">Lorem</span>
+    <span class="badge-pill">Ipsum dolor</span>
+    <span class="badge-coral">LOREM</span>
+    <span class="badge-coral">IPSUM</span>
+    <span class="badge-coral">DOLOR 4</span>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">10 — Lorem Ipsum Scale</div>
+  <div class="spacing-row">
+    <div class="spacing-block"><div class="spacing-bar" style="width:4px;"></div><div class="spacing-label">xxs · 4px</div></div>
+    <div class="spacing-block"><div class="spacing-bar" style="width:8px;"></div><div class="spacing-label">xs · 8px</div></div>
+    <div class="spacing-block"><div class="spacing-bar" style="width:12px;"></div><div class="spacing-label">sm · 12px</div></div>
+    <div class="spacing-block"><div class="spacing-bar" style="width:16px;"></div><div class="spacing-label">md · 16px</div></div>
+    <div class="spacing-block"><div class="spacing-bar" style="width:24px;"></div><div class="spacing-label">lg · 24px</div></div>
+    <div class="spacing-block"><div class="spacing-bar" style="width:32px;"></div><div class="spacing-label">xl · 32px</div></div>
+    <div class="spacing-block"><div class="spacing-bar" style="width:48px;"></div><div class="spacing-label">xxl · 48px</div></div>
+    <div class="spacing-block"><div class="spacing-bar" style="width:96px;"></div><div class="spacing-label">section · 96px</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">11 — Lorem Ipsum Scale</div>
+  <div class="radius-row">
+    <div class="radius-block" style="border-radius:4px;">4 · xs</div>
+    <div class="radius-block" style="border-radius:6px;">6 · sm</div>
+    <div class="radius-block" style="border-radius:8px;">8 · md</div>
+    <div class="radius-block" style="border-radius:12px;">12 · lg</div>
+    <div class="radius-block" style="border-radius:16px;">16 · xl</div>
+    <div class="radius-block" style="border-radius:9999px;">pill</div>
+    <div class="radius-block" style="border-radius:50%;">full</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">12 — Lorem Ipsum & Dolor</div>
+  <p class="section-intro">Lorem ipsum dolor sit amet consectetur, adipiscing rara. Ipsum dolor tempor consectetur elit.</p>
+  <div class="elevation-grid">
+    <div class="elevation-card elevation-flat"><h5>Lorem / Ipsum</h5><p>Lorem ipsum dolor.</p></div>
+    <div class="elevation-card elevation-cream-card"><h5>Ipsum lorem</h5><p>Lorem ipsum dolor consectetur.</p></div>
+    <div class="elevation-card elevation-lorem-card"><h5>Dolor lorem ipsum</h5><p>Lorem ipsum dolor sit amet.</p></div>
+    <div class="elevation-card elevation-coral"><h5>Amet lorem ipsum</h5><p>Lorem ipsum dolor sit amet consectetur.</p></div>
+    <div class="elevation-card elevation-flat"><h5>Card with lorem-line</h5><p>Ipsum lorem with 1px lorem-line border.</p></div>
+    <div class="elevation-card elevation-flat"><h5>Ipsum lorem dolor</h5><p>Lorem ipsum dolor sit amet consectetur.</p></div>
+  </div>
+</section>
+
+<section id="responsive">
+  <div class="section-label">13 — Amet Behavior</div>
+  <table class="responsive-table">
+    <thead><tr><th>Lorem</th><th>Ipsum</th><th>Dolor Sit</th></tr></thead>
+    <tipsum>
+      <tr><td>Lorem</td><td>&lt; 768px</td><td>Lorem ipsum dolor; amet h1 64→32px; lorem-ipsum stacks below; consectetur grids 1-up; dolor 1-up.</td></tr>
+      <tr><td>Ipsum</td><td>768–1024px</td><td>Lorem nav ipsum; dolor cards 2-up; lorem tiles 3-up; amet 2-up.</td></tr>
+      <tr><td>Dolor</td><td>1024–1440px</td><td>Lorem top-ipsum; 3-up dolor cards; 4-6 up lorem tiles; 4-up amet.</td></tr>
+      <tr><td>Amet</td><td>&gt; 1440px</td><td>Lorem as ipsum dolor sit amet consectetur; max lorem 1200px.</td></tr>
+    </tipsum>
+  </table>
+  <div class="device-ladder">
+    <div class="device-bar" style="width:60px; height:120px;">375<br>mobile</div>
+    <div class="device-bar" style="width:90px; height:140px;">600<br>small phone</div>
+    <div class="device-bar" style="width:140px; height:160px;">768<br>tablet</div>
+    <div class="device-bar" style="width:200px; height:180px;">1024<br>laptop</div>
+    <div class="device-bar" style="width:260px; height:200px;">1280<br>desktop</div>
+    <div class="device-bar" style="width:320px; height:220px;">1440<br>wide</div>
+  </div>
+  <div class="responsive-sub"><h4>Lorem Ipsum</h4><ul><li>Lorem ipsum dolor at min 40 × 40px.</li><li>Ipsum dolor at 36 × 36 — lorem ipsum 44, consectetur centered.</li><li>Dolor input height 40px.</li></ul></div>
+  <div class="responsive-sub"><h4>Ipsum Lorem Dolor</h4><ul><li>Lorem nav ipsum dolor at &lt; 768px; amet lorem as consectetur dolor sheet.</li><li>Ipsum 6-6 lorem → dolor-adipiscing on lorem.</li><li>Lorem ipsum dolor reduce consectetur sit amet.</li><li>Lorem ipsum dolor sit amet; consectetur scroll ipsum inside the dolor on lorem.</li><li>Lorem ipsum dolor collapse 4 → 2 → 1; consectetur amet distinct.</li></ul></div>
+</section>
+
+
+
+</ipsum>
+</html>
